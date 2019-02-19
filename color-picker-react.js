@@ -1,35 +1,28 @@
 
 
-class LabeledSlider extends React.Component {
+const LabeledSlider  = (props) => {
 
-  constructor(props){
-    super(props);
-    
-  }
+  const labelProps = {
+    style: {
+      display: 'inline-block',
+      width: '50px',
+      'text-align': 'left',
+    },
+  };
 
-  render() {
-
-    const labelProps = {
-      style: {
-        display: 'inline-block',
-        width: '50px',
-        'text-align': 'left',
-      },
-    };
-
-    return React.createElement('div', null, 
-      React.createElement('div', labelProps, `${this.props.label}:`),
-      React.createElement('input',{
-        type: 'range',
-        min: 0,
-        max: 255,
-        value: this.props.value,
-        onChange: (event) => this.props.valueChange(parseInt(event.target.value)),
-      }),
-      React.createElement('span', null, this.props.value),
-    );
-  }
+  return React.createElement('div', null, 
+    React.createElement('div', labelProps, `${props.label}:`),
+    React.createElement('input',{
+      type: 'range',
+      min: 0,
+      max: 255,
+      value: props.value,
+      onChange: (event) => props.valueChange(parseInt(event.target.value)),
+    }),
+    React.createElement('span', null, props.value),
+  );
 }
+
 
 class ColorPicker extends React.Component {
   constructor(props){
