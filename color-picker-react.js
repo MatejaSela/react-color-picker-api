@@ -1,7 +1,11 @@
 
-
+/**
+ * This is the functional component implementation of a labeled slider with a readout.
+ * 
+ * @param {Object} props - the props of the component
+ */
 const LabeledSlider  = (props) => {
-
+  // the properties that determine the appearance of the label div
   const labelProps = {
     style: {
       display: 'inline-block',
@@ -10,6 +14,7 @@ const LabeledSlider  = (props) => {
     },
   };
 
+  // return the hierarchy of elements that make up the slider, label and readout
   return React.createElement('div', null, 
     React.createElement('div', labelProps, `${props.label}:`),
     React.createElement('input',{
@@ -23,10 +28,16 @@ const LabeledSlider  = (props) => {
   );
 }
 
-
+/**
+ * The ColorPicker component implements the full color picker with updating swatch
+ * 
+ * This component doesn't take any props.
+ */
 class ColorPicker extends React.Component {
   constructor(props){
     super(props);
+
+    // initialize the state of the component
     this.state = {
       red: 0,
       green: 0,
@@ -34,7 +45,11 @@ class ColorPicker extends React.Component {
     }
   }
 
+  /**
+   * Render the component when the state changes
+   */
   render() { 
+    // styling for the swatch
     const swatchProps = {
       style: {
         width: '100px',
@@ -44,6 +59,9 @@ class ColorPicker extends React.Component {
       },
     };
 
+    // return the component hierarchy
+    // notice how we push the state down to the sliders as well as callbacks so we
+    // can update the state as they change.
     return React.createElement(
       'div', null,
       React.createElement('div', swatchProps),
